@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    #bgImage {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      z-index: -1; 
+    }
+
+    #nav {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      z-index: 1;
+    }
+
+    #nav button {
+      margin: 5px;
+      padding: 8px 14px;
+    }
+
+    #prevBtn, #nextBtn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 40px;
+      padding: 10px;
+      background-color: rgba(0, 128, 128, 0.6);
+      color: white;
+      border: none;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    #prevBtn {
+      left: 20px;
+    }
+
+    #nextBtn {
+      right: 20px;
+    }
+
+    #content {
+      position: absolute;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: white;
+      z-index: 1;
+    }
+
+    #content h1, #content h4 {
+      text-shadow: 2px 2px 5px black;
+    }
+
+    #content button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+    }
+    #oin{
+     position: absolute;
+    top: 20px;
+    left:30px;
+      z-index: 1;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <img id="bgImage" src="https://i.pinimg.com/736x/1e/49/36/1e493676f26a43908e404f8e7e4a6cfc.jpg" alt="slideshow">
+
+
+  <div id="nav">
+    <button style="border:none;background:transparent">Home</button>
+    <button style="border:none;background:transparent">TV Show</button>
+    <button style="border:none;background:transparent">Movie</button>
+    <button style="border:none;background:transparent">Upcoming</button>
+  </div>
+  <div id="oin">
+    <button style="border:none;background:transparent">
+    <span style="color: blue;font-size:40px;">flick</span>
+    <span style="color:red;font-size:40px">finder</span>
+    </button>
+  </div>
+
+  <button id="prevBtn">&#8592;</button>
+  <button id="nextBtn">&#8594;</button>
+
+
+  <div id="content">
+    <h1>Bringing the big screen to your screen</h1>
+    <h4>Discover and celebrate movies with honest reviews</h4>
+    <button>Discover More</button>
+  </div>
+
+  <script>
+    var imageList = [
+      "https://i.pinimg.com/736x/1e/49/36/1e493676f26a43908e404f8e7e4a6cfc.jpg",
+      "https://imgix.ranker.com/user_node_img/114/2268400/original/2268400-photo-u63?auto=format&q=60&fit=crop&fm=pjpg&dpr=2&w=375",
+      "https://th.bing.com/th/id/OIP.un-Uc-roqopTR3uc1kQJmgHaK-?r=0&rs=1&pid=ImgDetMain&cb=idpwebpc2"
+    ];
+
+    var i = 0;
+    var bgImg = document.getElementById("bgImage");
+
+    document.getElementById("nextBtn").onclick = function () {
+      i = i + 1;
+      if (i >= imageList.length) {
+        i = 0;
+      }
+      bgImg.src = imageList[i];
+    };
+
+    document.getElementById("prevBtn").onclick = function () {
+      i = i - 1;
+      if (i < 0) {
+        i = imageList.length - 1;
+      }
+      bgImg.src = imageList[i];
+    };
+  </script>
+
+</body>
+</html>
